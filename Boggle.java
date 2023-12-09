@@ -65,7 +65,7 @@ public class Boggle {
     // Constructor for reading the board from a file
     public Boggle(String fileName) {
         try {
-            readBoardFromFile("Words/board-points3.txt"); // Replace with your actual file name
+            readBoardFromFile(fileName); // Replace with your actual file name
         } catch (FileNotFoundException e) {
             System.err.println("Error: File not found");
         }
@@ -74,6 +74,7 @@ public class Boggle {
 
     // Helper method to read the board from a file
     private void readBoardFromFile(String fileName) throws FileNotFoundException {
+        System.out.println("Input FileName: ");
         Scanner scanner = new Scanner(new File(fileName));
         int rows = 0;
         int cols = 0;
@@ -173,13 +174,14 @@ public class Boggle {
 
     // Method to generate all valid words based on a given dictionary and board
     public static List<String> getAllValidWords(String dictionaryName, String boardName) {
-        List<String> dictionary = readDictionary("Words/dictionary.txt");
-        String[][] board = readBoard("Words/board-points3.txt"); 
+        List<String> dictionary = readDictionary(dictionaryName);
+        String[][] board = readBoard(boardName); 
     
         // Create a new Boggle instance with the read board
         Boggle boggle = new Boggle(board);
     
         Set<String> validWords = new HashSet<>();
+
     
         // Iterate through each word in the dictionary
         for (String word : dictionary) {
@@ -275,7 +277,7 @@ public class Boggle {
         System.out.println(boggle);
 
         // Example: Check if a word can be formed on the board
-        String testWord = "test";
+        String testWord = "bee";
         boolean canFormWord = boggle.matchWord(testWord);
         System.out.println("Can form the word '" + testWord + "': " + canFormWord);
     }
