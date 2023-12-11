@@ -1,0 +1,2 @@
+Test the programm across provided inputs
+Display program time
